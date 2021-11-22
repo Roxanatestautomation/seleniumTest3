@@ -13,8 +13,10 @@ import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class practice {
+
+    //TEST PASSED
     @Test
-    public void simpleSearch () {
+    public void simpleSearch() {
         System.setProperty("webdriver.chrome.driver", "C:\\Webdrivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
@@ -30,14 +32,15 @@ public class practice {
 
     }
 
+    // TEST FAIL, nu toate produsele de pe pagina contin cuv trousers
     @Test
-    public void simpleSearchWithOneKeyword () {
+    public void simpleSearchWithOneKeyword() {
         System.setProperty("webdriver.chrome.driver", "C:\\Webdrivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         driver.get("http://testfasttrackit.info/selenium-test/");
 
-        driver.findElement(By.id("search")).sendKeys("trousers"+ Keys.ENTER);
+        driver.findElement(By.id("search")).sendKeys("trousers" + Keys.ENTER);
 
         System.out.println("Press Enter in search field.");
 
@@ -45,9 +48,8 @@ public class practice {
 
         System.out.println("Stored " + productNames.size() + " product names.");
 
-        for(WebElement productName : productNames) {
+        for (WebElement productName : productNames) {
             assertThat("Some of the products`names do not contain the searched keyword.", productName.getText(), containsString("TROUSERS"));
         }
     }
 }
-
